@@ -56,13 +56,22 @@ async def on_voice_state_update(member, before, after):
         users = get_users('Space')
         num_users = len(users)
         user_list = '\n'.join(f'* {user}' for user in users)
-
         message = f"""💥 {user_name} entered the <https://discord.gg/MrFpvbmc|awakened bros Space channel> on discord
 
 {num_users} member currently in the space
 
 {user_list}"""
+    elif before.channel and not after.channel:
+        user_name = member.name
+        users = get_users('Space')
+        num_users = len(users)
+        user_list = '\n'.join(f'* {user}' for user in users)
+        message = f"""💥 {user_name} left the <https://discord.gg/MrFpvbmc|awakened bros Space channel> on discord
 
-        send_message_slack(message)
+{num_users} member currently in the space
+
+{user_list}"""
+
+    send_message_slack(message)
 
 discord_client.run(TOKEN)
