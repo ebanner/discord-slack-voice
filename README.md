@@ -1,3 +1,3 @@
-# discord-voice-room-alerter
+# discord-slack-voice
 
 Discord bot for sending a message to slack when someone enters the Voice room
